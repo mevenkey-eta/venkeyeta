@@ -1,0 +1,3582 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="en"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+<meta content="same-origin" name="referrer"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!--app-head-->
+<style>
+  #airo-boot-spinner {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #fff;
+    color: #555;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    animation: airo-boot-fade 0.2s ease 1s forwards;
+  }
+  #app:not(:empty) ~ #airo-boot-spinner {
+    display: none;
+  }
+  .airo-boot-ring {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(0, 0, 0, 0.12);
+    border-top-color: #555;
+    border-radius: 50%;
+    animation: airo-boot-spin 0.9s linear infinite;
+  }
+  .airo-boot-text,
+  .airo-boot-slow-text {
+    margin: 0;
+    font-size: 14px;
+  }
+  .airo-boot-slow-text {
+    display: none;
+  }
+  #airo-boot-spinner.airo-boot-slow .airo-boot-slow-text {
+    display: block;
+  }
+  @keyframes airo-boot-spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes airo-boot-fade {
+    to { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .airo-boot-ring {
+      animation-duration: 2.4s;
+    }
+  }
+</style>
+<style data-vite-dev-id="/app/src/styles/globals.css" type="text/css">@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+*, ::before, ::after{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/*
+! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: var(--font-sans); /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono); /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+  :root {
+    /* Core Colors */
+    --background: 220 27% 98%;
+    --foreground: 0 0% 4%;
+    --card: 220 27% 98%;
+    --card-foreground: 0 0% 4%;
+    --popover: 220 27% 98%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 225 21% 93%;
+    --secondary-foreground: 0 0% 39%;
+    --muted: 225 21% 93%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 24% 89%;
+    --input: 222 24% 89%;
+    --ring: 243 75% 59%;
+
+    /* Extended Colors */
+    --chart-1: 244 76% 89%;
+    --chart-2: 244 75% 74%;
+    --chart-3: 243 75% 59%;
+    --chart-4: 244 76% 44%;
+    --chart-5: 243 75% 29%;
+
+    /* Sidebar Colors */
+    --sidebar: 225 21% 93%;
+    --sidebar-foreground: 0 0% 4%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 243 75% 59%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 222 24% 89%;
+    --sidebar-ring: 243 75% 59%;
+
+    /* Typography */
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Sora", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+    /* Button radius: the kit's radiusButton is written here at install time;
+       the default matches shadcn `rounded-md` (calc(var(--radius) - 2px)) so a
+       kit without a button radius renders unchanged. Consumed by the Button
+       `cva` via `rounded-[var(--radius-button)]` (AIROBUILD-3249). */
+    --radius-button: calc(var(--radius) - 2px);
+
+    /* Shadows */
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+
+  *{
+  border-color: hsl(var(--border));
+}
+
+  body{
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  
+    font-family: var(--font-sans);
+}
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+  }
+.\!container{
+  width: 100% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+}
+.container{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+@media (min-width: 1400px){
+
+  .\!container{
+    max-width: 1400px !important;
+  }
+
+  .container{
+    max-width: 1400px;
+  }
+}
+  /* Defensive: a stray body H1 renders one step below .page-title and is
+     visually distinct from the real page title above it. */
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.pointer-events-none{
+  pointer-events: none;
+}
+.\!visible{
+  visibility: visible !important;
+}
+.visible{
+  visibility: visible;
+}
+.invisible{
+  visibility: hidden;
+}
+.collapse{
+  visibility: collapse;
+}
+.static{
+  position: static;
+}
+.fixed{
+  position: fixed;
+}
+.absolute{
+  position: absolute;
+}
+.relative{
+  position: relative;
+}
+.inset-0{
+  inset: 0px;
+}
+.inset-x-0{
+  left: 0px;
+  right: 0px;
+}
+.inset-y-0{
+  top: 0px;
+  bottom: 0px;
+}
+.-bottom-12{
+  bottom: -3rem;
+}
+.-left-12{
+  left: -3rem;
+}
+.-left-\[33px\]{
+  left: -33px;
+}
+.-right-1{
+  right: -0.25rem;
+}
+.-right-12{
+  right: -3rem;
+}
+.-top-1{
+  top: -0.25rem;
+}
+.-top-12{
+  top: -3rem;
+}
+.bottom-0{
+  bottom: 0px;
+}
+.bottom-10{
+  bottom: 2.5rem;
+}
+.bottom-\[-1px\]{
+  bottom: -1px;
+}
+.left-0{
+  left: 0px;
+}
+.left-1\/2{
+  left: 50%;
+}
+.left-10{
+  left: 2.5rem;
+}
+.left-2{
+  left: 0.5rem;
+}
+.left-2\.5{
+  left: 0.625rem;
+}
+.left-\[-1px\]{
+  left: -1px;
+}
+.left-\[50\%\]{
+  left: 50%;
+}
+.right-0{
+  right: 0px;
+}
+.right-10{
+  right: 2.5rem;
+}
+.right-4{
+  right: 1rem;
+}
+.right-\[-1px\]{
+  right: -1px;
+}
+.top-0{
+  top: 0px;
+}
+.top-1{
+  top: 0.25rem;
+}
+.top-1\/2{
+  top: 50%;
+}
+.top-10{
+  top: 2.5rem;
+}
+.top-2\.5{
+  top: 0.625rem;
+}
+.top-4{
+  top: 1rem;
+}
+.top-\[-1px\]{
+  top: -1px;
+}
+.top-\[1px\]{
+  top: 1px;
+}
+.top-\[50\%\]{
+  top: 50%;
+}
+.top-\[60\%\]{
+  top: 60%;
+}
+.top-full{
+  top: 100%;
+}
+.top-1\.5{
+  top: 0.375rem;
+}
+.z-10{
+  z-index: 10;
+}
+.z-40{
+  z-index: 40;
+}
+.z-50{
+  z-index: 50;
+}
+.z-\[1\]{
+  z-index: 1;
+}
+.-mx-1{
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.-ml-4{
+  margin-left: -1rem;
+}
+.-mt-4{
+  margin-top: -1rem;
+}
+.mb-0\.5{
+  margin-bottom: 0.125rem;
+}
+.mb-1{
+  margin-bottom: 0.25rem;
+}
+.mb-1\.5{
+  margin-bottom: 0.375rem;
+}
+.mb-12{
+  margin-bottom: 3rem;
+}
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+.mb-3{
+  margin-bottom: 0.75rem;
+}
+.mb-3\.5{
+  margin-bottom: 0.875rem;
+}
+.mb-4{
+  margin-bottom: 1rem;
+}
+.mb-5{
+  margin-bottom: 1.25rem;
+}
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+.mb-8{
+  margin-bottom: 2rem;
+}
+.mb-9{
+  margin-bottom: 2.25rem;
+}
+.ml-1{
+  margin-left: 0.25rem;
+}
+.ml-auto{
+  margin-left: auto;
+}
+.mr-2{
+  margin-right: 0.5rem;
+}
+.mt-0\.5{
+  margin-top: 0.125rem;
+}
+.mt-1\.5{
+  margin-top: 0.375rem;
+}
+.mt-14{
+  margin-top: 3.5rem;
+}
+.mt-2{
+  margin-top: 0.5rem;
+}
+.mt-24{
+  margin-top: 6rem;
+}
+.mt-4{
+  margin-top: 1rem;
+}
+.mt-5{
+  margin-top: 1.25rem;
+}
+.mt-auto{
+  margin-top: auto;
+}
+.mb-2\.5{
+  margin-bottom: 0.625rem;
+}
+.mb-10{
+  margin-bottom: 2.5rem;
+}
+.mr-1\.5{
+  margin-right: 0.375rem;
+}
+.mb-7{
+  margin-bottom: 1.75rem;
+}
+.mt-\[7px\]{
+  margin-top: 7px;
+}
+.block{
+  display: block;
+}
+.inline-block{
+  display: inline-block;
+}
+.inline{
+  display: inline;
+}
+.flex{
+  display: flex;
+}
+.inline-flex{
+  display: inline-flex;
+}
+.table{
+  display: table;
+}
+.grid{
+  display: grid;
+}
+.contents{
+  display: contents;
+}
+.list-item{
+  display: list-item;
+}
+.hidden{
+  display: none;
+}
+.aspect-square{
+  aspect-ratio: 1 / 1;
+}
+.size-4{
+  width: 1rem;
+  height: 1rem;
+}
+.size-\[--cell-size\]{
+  width: var(--cell-size);
+  height: var(--cell-size);
+}
+.h-1\.5{
+  height: 0.375rem;
+}
+.h-10{
+  height: 2.5rem;
+}
+.h-11{
+  height: 2.75rem;
+}
+.h-12{
+  height: 3rem;
+}
+.h-14{
+  height: 3.5rem;
+}
+.h-2{
+  height: 0.5rem;
+}
+.h-2\.5{
+  height: 0.625rem;
+}
+.h-3{
+  height: 0.75rem;
+}
+.h-3\.5{
+  height: 0.875rem;
+}
+.h-32{
+  height: 8rem;
+}
+.h-4{
+  height: 1rem;
+}
+.h-40{
+  height: 10rem;
+}
+.h-5{
+  height: 1.25rem;
+}
+.h-6{
+  height: 1.5rem;
+}
+.h-8{
+  height: 2rem;
+}
+.h-9{
+  height: 2.25rem;
+}
+.h-\[--cell-size\]{
+  height: var(--cell-size);
+}
+.h-\[1px\]{
+  height: 1px;
+}
+.h-\[68px\]{
+  height: 68px;
+}
+.h-\[var\(--radix-navigation-menu-viewport-height\)\]{
+  height: var(--radix-navigation-menu-viewport-height);
+}
+.h-\[var\(--radix-select-trigger-height\)\]{
+  height: var(--radix-select-trigger-height);
+}
+.h-auto{
+  height: auto;
+}
+.h-full{
+  height: 100%;
+}
+.h-px{
+  height: 1px;
+}
+.h-screen{
+  height: 100vh;
+}
+.h-1{
+  height: 0.25rem;
+}
+.max-h-\[--radix-context-menu-content-available-height\]{
+  max-height: var(--radix-context-menu-content-available-height);
+}
+.max-h-\[--radix-select-content-available-height\]{
+  max-height: var(--radix-select-content-available-height);
+}
+.max-h-\[300px\]{
+  max-height: 300px;
+}
+.max-h-\[var\(--radix-dropdown-menu-content-available-height\)\]{
+  max-height: var(--radix-dropdown-menu-content-available-height);
+}
+.min-h-\[80px\]{
+  min-height: 80px;
+}
+.min-h-screen{
+  min-height: 100vh;
+}
+.w-1\.5{
+  width: 0.375rem;
+}
+.w-10{
+  width: 2.5rem;
+}
+.w-11{
+  width: 2.75rem;
+}
+.w-2{
+  width: 0.5rem;
+}
+.w-2\.5{
+  width: 0.625rem;
+}
+.w-3{
+  width: 0.75rem;
+}
+.w-3\.5{
+  width: 0.875rem;
+}
+.w-3\/4{
+  width: 75%;
+}
+.w-32{
+  width: 8rem;
+}
+.w-4{
+  width: 1rem;
+}
+.w-40{
+  width: 10rem;
+}
+.w-5{
+  width: 1.25rem;
+}
+.w-56{
+  width: 14rem;
+}
+.w-6{
+  width: 1.5rem;
+}
+.w-64{
+  width: 16rem;
+}
+.w-72{
+  width: 18rem;
+}
+.w-8{
+  width: 2rem;
+}
+.w-9{
+  width: 2.25rem;
+}
+.w-\[--cell-size\]{
+  width: var(--cell-size);
+}
+.w-\[100px\]{
+  width: 100px;
+}
+.w-\[1px\]{
+  width: 1px;
+}
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.w-full{
+  width: 100%;
+}
+.w-max{
+  width: -moz-max-content;
+  width: max-content;
+}
+.w-px{
+  width: 1px;
+}
+.w-12{
+  width: 3rem;
+}
+.w-1{
+  width: 0.25rem;
+}
+.min-w-0{
+  min-width: 0px;
+}
+.min-w-10{
+  min-width: 2.5rem;
+}
+.min-w-11{
+  min-width: 2.75rem;
+}
+.min-w-9{
+  min-width: 2.25rem;
+}
+.min-w-\[--cell-size\]{
+  min-width: var(--cell-size);
+}
+.min-w-\[12rem\]{
+  min-width: 12rem;
+}
+.min-w-\[20px\]{
+  min-width: 20px;
+}
+.min-w-\[8rem\]{
+  min-width: 8rem;
+}
+.min-w-\[var\(--radix-select-trigger-width\)\]{
+  min-width: var(--radix-select-trigger-width);
+}
+.max-w-2xl{
+  max-width: 42rem;
+}
+.max-w-4xl{
+  max-width: 56rem;
+}
+.max-w-6xl{
+  max-width: 72rem;
+}
+.max-w-7xl{
+  max-width: 80rem;
+}
+.max-w-\[1180px\]{
+  max-width: 1180px;
+}
+.max-w-\[16ch\]{
+  max-width: 16ch;
+}
+.max-w-\[52ch\]{
+  max-width: 52ch;
+}
+.max-w-\[56ch\]{
+  max-width: 56ch;
+}
+.max-w-\[65ch\]{
+  max-width: 65ch;
+}
+.max-w-\[68ch\]{
+  max-width: 68ch;
+}
+.max-w-\[70ch\]{
+  max-width: 70ch;
+}
+.max-w-\[820px\]{
+  max-width: 820px;
+}
+.max-w-full{
+  max-width: 100%;
+}
+.max-w-lg{
+  max-width: 32rem;
+}
+.max-w-max{
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+.max-w-md{
+  max-width: 28rem;
+}
+.max-w-screen-2xl{
+  max-width: 1536px;
+}
+.max-w-screen-lg{
+  max-width: 1024px;
+}
+.max-w-screen-md{
+  max-width: 768px;
+}
+.max-w-screen-sm{
+  max-width: 640px;
+}
+.max-w-screen-xl{
+  max-width: 1280px;
+}
+.max-w-\[58ch\]{
+  max-width: 58ch;
+}
+.max-w-\[64ch\]{
+  max-width: 64ch;
+}
+.max-w-\[760px\]{
+  max-width: 760px;
+}
+.max-w-\[62ch\]{
+  max-width: 62ch;
+}
+.max-w-\[72ch\]{
+  max-width: 72ch;
+}
+.max-w-\[780px\]{
+  max-width: 780px;
+}
+.max-w-\[60ch\]{
+  max-width: 60ch;
+}
+.max-w-\[680px\]{
+  max-width: 680px;
+}
+.flex-1{
+  flex: 1 1 0%;
+}
+.flex-shrink-0{
+  flex-shrink: 0;
+}
+.shrink-0{
+  flex-shrink: 0;
+}
+.grow{
+  flex-grow: 1;
+}
+.grow-0{
+  flex-grow: 0;
+}
+.basis-full{
+  flex-basis: 100%;
+}
+.caption-bottom{
+  caption-side: bottom;
+}
+.border-collapse{
+  border-collapse: collapse;
+}
+.origin-\[--radix-context-menu-content-transform-origin\]{
+  transform-origin: var(--radix-context-menu-content-transform-origin);
+}
+.origin-\[--radix-dropdown-menu-content-transform-origin\]{
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+.origin-\[--radix-hover-card-content-transform-origin\]{
+  transform-origin: var(--radix-hover-card-content-transform-origin);
+}
+.origin-\[--radix-menubar-content-transform-origin\]{
+  transform-origin: var(--radix-menubar-content-transform-origin);
+}
+.origin-\[--radix-popover-content-transform-origin\]{
+  transform-origin: var(--radix-popover-content-transform-origin);
+}
+.origin-\[--radix-select-content-transform-origin\]{
+  transform-origin: var(--radix-select-content-transform-origin);
+}
+.origin-\[--radix-tooltip-content-transform-origin\]{
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+}
+.-translate-x-1\/2{
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-x-full{
+  --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-y-1\/2{
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-y-2{
+  --tw-translate-y: -0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-0{
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[-50\%\]{
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-y-2{
+  --tw-translate-y: 0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-y-\[-50\%\]{
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-rotate-45{
+  --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-45{
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-90{
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes pulse{
+
+  50%{
+    opacity: .5;
+  }
+}
+.animate-pulse{
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes spin{
+
+  to{
+    transform: rotate(360deg);
+  }
+}
+.animate-spin{
+  animation: spin 1s linear infinite;
+}
+.cursor-default{
+  cursor: default;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.touch-none{
+  touch-action: none;
+}
+.select-none{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.resize-none{
+  resize: none;
+}
+.resize{
+  resize: both;
+}
+.list-decimal{
+  list-style-type: decimal;
+}
+.list-disc{
+  list-style-type: disc;
+}
+.list-none{
+  list-style-type: none;
+}
+.appearance-none{
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-\[110px_1fr\]{
+  grid-template-columns: 110px 1fr;
+}
+.grid-cols-\[52px_1fr\]{
+  grid-template-columns: 52px 1fr;
+}
+.flex-row{
+  flex-direction: row;
+}
+.flex-col{
+  flex-direction: column;
+}
+.flex-col-reverse{
+  flex-direction: column-reverse;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.items-start{
+  align-items: flex-start;
+}
+.items-end{
+  align-items: flex-end;
+}
+.items-center{
+  align-items: center;
+}
+.items-stretch{
+  align-items: stretch;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.gap-1{
+  gap: 0.25rem;
+}
+.gap-1\.5{
+  gap: 0.375rem;
+}
+.gap-10{
+  gap: 2.5rem;
+}
+.gap-14{
+  gap: 3.5rem;
+}
+.gap-2{
+  gap: 0.5rem;
+}
+.gap-2\.5{
+  gap: 0.625rem;
+}
+.gap-3{
+  gap: 0.75rem;
+}
+.gap-3\.5{
+  gap: 0.875rem;
+}
+.gap-4{
+  gap: 1rem;
+}
+.gap-5{
+  gap: 1.25rem;
+}
+.gap-6{
+  gap: 1.5rem;
+}
+.gap-7{
+  gap: 1.75rem;
+}
+.gap-px{
+  gap: 1px;
+}
+.gap-0{
+  gap: 0px;
+}
+.gap-8{
+  gap: 2rem;
+}
+.gap-0\.5{
+  gap: 0.125rem;
+}
+.gap-16{
+  gap: 4rem;
+}
+.gap-x-8{
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.gap-y-2{
+  row-gap: 0.5rem;
+}
+.space-x-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
+}
+.space-y-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.space-y-3 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+.space-y-4 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+.space-y-8 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+.self-start{
+  align-self: flex-start;
+}
+.overflow-auto{
+  overflow: auto;
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+.overflow-y-auto{
+  overflow-y: auto;
+}
+.overflow-x-hidden{
+  overflow-x: hidden;
+}
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.whitespace-nowrap{
+  white-space: nowrap;
+}
+.break-words{
+  overflow-wrap: break-word;
+}
+.rounded{
+  border-radius: 0.25rem;
+}
+.rounded-\[inherit\]{
+  border-radius: inherit;
+}
+.rounded-\[var\(--radius-button\)\]{
+  border-radius: var(--radius-button);
+}
+.rounded-full{
+  border-radius: 9999px;
+}
+.rounded-lg{
+  border-radius: var(--radius);
+}
+.rounded-md{
+  border-radius: calc(var(--radius) - 2px);
+}
+.rounded-none{
+  border-radius: 0px;
+}
+.rounded-sm{
+  border-radius: calc(var(--radius) - 4px);
+}
+.rounded-xl{
+  border-radius: 0.75rem;
+}
+.rounded-l-md{
+  border-top-left-radius: calc(var(--radius) - 2px);
+  border-bottom-left-radius: calc(var(--radius) - 2px);
+}
+.rounded-r-md{
+  border-top-right-radius: calc(var(--radius) - 2px);
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+}
+.rounded-t-\[10px\]{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.rounded-tl-sm{
+  border-top-left-radius: calc(var(--radius) - 4px);
+}
+.border{
+  border-width: 1px;
+}
+.border-2{
+  border-width: 2px;
+}
+.border-y{
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+.border-b{
+  border-bottom-width: 1px;
+}
+.border-b-2{
+  border-bottom-width: 2px;
+}
+.border-l{
+  border-left-width: 1px;
+}
+.border-l-2{
+  border-left-width: 2px;
+}
+.border-r{
+  border-right-width: 1px;
+}
+.border-r-2{
+  border-right-width: 2px;
+}
+.border-t{
+  border-top-width: 1px;
+}
+.border-t-2{
+  border-top-width: 2px;
+}
+.border-dashed{
+  border-style: dashed;
+}
+.border-border{
+  border-color: hsl(var(--border));
+}
+.border-border\/20{
+  border-color: hsl(var(--border) / 0.2);
+}
+.border-destructive\/50{
+  border-color: hsl(var(--destructive) / 0.5);
+}
+.border-foreground{
+  border-color: hsl(var(--foreground));
+}
+.border-gray-200{
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
+.border-gray-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
+}
+.border-input{
+  border-color: hsl(var(--input));
+}
+.border-primary{
+  border-color: hsl(var(--primary));
+}
+.border-primary\/30{
+  border-color: hsl(var(--primary) / 0.3);
+}
+.border-primary\/35{
+  border-color: hsl(var(--primary) / 0.35);
+}
+.border-primary\/60{
+  border-color: hsl(var(--primary) / 0.6);
+}
+.border-transparent{
+  border-color: transparent;
+}
+.border-l-transparent{
+  border-left-color: transparent;
+}
+.border-t-transparent{
+  border-top-color: transparent;
+}
+.bg-accent{
+  background-color: hsl(var(--accent));
+}
+.bg-background{
+  background-color: hsl(var(--background));
+}
+.bg-background\/95{
+  background-color: hsl(var(--background) / 0.95);
+}
+.bg-black\/50{
+  background-color: rgb(0 0 0 / 0.5);
+}
+.bg-black\/80{
+  background-color: rgb(0 0 0 / 0.8);
+}
+.bg-border{
+  background-color: hsl(var(--border));
+}
+.bg-card{
+  background-color: hsl(var(--card));
+}
+.bg-destructive{
+  background-color: hsl(var(--destructive));
+}
+.bg-foreground{
+  background-color: hsl(var(--foreground));
+}
+.bg-gray-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-50\/50{
+  background-color: rgb(249 250 251 / 0.5);
+}
+.bg-muted{
+  background-color: hsl(var(--muted));
+}
+.bg-muted\/30{
+  background-color: hsl(var(--muted) / 0.3);
+}
+.bg-muted\/40{
+  background-color: hsl(var(--muted) / 0.4);
+}
+.bg-muted\/50{
+  background-color: hsl(var(--muted) / 0.5);
+}
+.bg-popover{
+  background-color: hsl(var(--popover));
+}
+.bg-primary{
+  background-color: hsl(var(--primary));
+}
+.bg-red-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+.bg-secondary{
+  background-color: hsl(var(--secondary));
+}
+.bg-transparent{
+  background-color: transparent;
+}
+.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.bg-white\/10{
+  background-color: rgb(255 255 255 / 0.1);
+}
+.bg-muted\/20{
+  background-color: hsl(var(--muted) / 0.2);
+}
+.bg-primary\/5{
+  background-color: hsl(var(--primary) / 0.05);
+}
+.bg-gradient-to-b{
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.from-background{
+  --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position);
+  --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-muted\/20{
+  --tw-gradient-to: hsl(var(--muted) / 0.2) var(--tw-gradient-to-position);
+}
+.fill-current{
+  fill: currentColor;
+}
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.p-0{
+  padding: 0px;
+}
+.p-1{
+  padding: 0.25rem;
+}
+.p-2{
+  padding: 0.5rem;
+}
+.p-3{
+  padding: 0.75rem;
+}
+.p-4{
+  padding: 1rem;
+}
+.p-6{
+  padding: 1.5rem;
+}
+.p-\[1px\]{
+  padding: 1px;
+}
+.px-1{
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.px-1\.5{
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+.px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-2\.5{
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.px-7{
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.px-\[--cell-size\]{
+  padding-left: var(--cell-size);
+  padding-right: var(--cell-size);
+}
+.py-0\.5{
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.py-1\.5{
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.py-16{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.py-3\.5{
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.py-7{
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+.py-8{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-9{
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+.py-\[70px\]{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.py-\[84px\]{
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+.py-\[90px\]{
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.py-\[60px\]{
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.py-\[48px\]{
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.py-\[56px\]{
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.pb-14{
+  padding-bottom: 3.5rem;
+}
+.pb-2\.5{
+  padding-bottom: 0.625rem;
+}
+.pb-4{
+  padding-bottom: 1rem;
+}
+.pb-\[60px\]{
+  padding-bottom: 60px;
+}
+.pl-2{
+  padding-left: 0.5rem;
+}
+.pl-2\.5{
+  padding-left: 0.625rem;
+}
+.pl-4{
+  padding-left: 1rem;
+}
+.pl-6{
+  padding-left: 1.5rem;
+}
+.pl-7{
+  padding-left: 1.75rem;
+}
+.pl-8{
+  padding-left: 2rem;
+}
+.pr-1{
+  padding-right: 0.25rem;
+}
+.pr-2{
+  padding-right: 0.5rem;
+}
+.pr-2\.5{
+  padding-right: 0.625rem;
+}
+.pr-3{
+  padding-right: 0.75rem;
+}
+.pt-0{
+  padding-top: 0px;
+}
+.pt-0\.5{
+  padding-top: 0.125rem;
+}
+.pt-4{
+  padding-top: 1rem;
+}
+.pt-5{
+  padding-top: 1.25rem;
+}
+.pt-7{
+  padding-top: 1.75rem;
+}
+.pt-\[88px\]{
+  padding-top: 88px;
+}
+.pb-12{
+  padding-bottom: 3rem;
+}
+.pb-\[72px\]{
+  padding-bottom: 72px;
+}
+.pt-\[100px\]{
+  padding-top: 100px;
+}
+.pb-\[80px\]{
+  padding-bottom: 80px;
+}
+.pl-5{
+  padding-left: 1.25rem;
+}
+.pt-\[120px\]{
+  padding-top: 120px;
+}
+.pl-\[52px\]{
+  padding-left: 52px;
+}
+.pt-1{
+  padding-top: 0.25rem;
+}
+.pt-8{
+  padding-top: 2rem;
+}
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-justify{
+  text-align: justify;
+}
+.align-middle{
+  vertical-align: middle;
+}
+.font-heading{
+  font-family: var(--font-heading);
+}
+.font-mono{
+  font-family: var(--font-mono);
+}
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+.text-7xl{
+  font-size: 4.5rem;
+  line-height: 1;
+}
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
+.text-9xl{
+  font-size: 8rem;
+  line-height: 1;
+}
+.text-\[0\.8rem\]{
+  font-size: 0.8rem;
+}
+.text-\[10px\]{
+  font-size: 10px;
+}
+.text-\[11\.5px\]{
+  font-size: 11.5px;
+}
+.text-\[11px\]{
+  font-size: 11px;
+}
+.text-\[12\.5px\]{
+  font-size: 12.5px;
+}
+.text-\[12px\]{
+  font-size: 12px;
+}
+.text-\[13\.5px\]{
+  font-size: 13.5px;
+}
+.text-\[13px\]{
+  font-size: 13px;
+}
+.text-\[14\.5px\]{
+  font-size: 14.5px;
+}
+.text-\[15px\]{
+  font-size: 15px;
+}
+.text-\[17px\]{
+  font-size: 17px;
+}
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.text-\[16px\]{
+  font-size: 16px;
+}
+.text-\[22px\]{
+  font-size: 22px;
+}
+.text-\[28px\]{
+  font-size: 28px;
+}
+.text-\[14px\]{
+  font-size: 14px;
+}
+.text-\[15\.5px\]{
+  font-size: 15.5px;
+}
+.text-\[26px\]{
+  font-size: 26px;
+}
+.text-\[18px\]{
+  font-size: 18px;
+}
+.font-bold{
+  font-weight: 700;
+}
+.font-medium{
+  font-weight: 500;
+}
+.font-normal{
+  font-weight: 400;
+}
+.font-semibold{
+  font-weight: 600;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+.lowercase{
+  text-transform: lowercase;
+}
+.italic{
+  font-style: italic;
+}
+.not-italic{
+  font-style: normal;
+}
+.leading-\[1\.08\]{
+  line-height: 1.08;
+}
+.leading-\[1\.1\]{
+  line-height: 1.1;
+}
+.leading-\[1\.3\]{
+  line-height: 1.3;
+}
+.leading-none{
+  line-height: 1;
+}
+.leading-relaxed{
+  line-height: 1.625;
+}
+.leading-\[1\.15\]{
+  line-height: 1.15;
+}
+.leading-snug{
+  line-height: 1.375;
+}
+.leading-\[1\.2\]{
+  line-height: 1.2;
+}
+.leading-\[1\.8\]{
+  line-height: 1.8;
+}
+.tracking-\[-0\.005em\]{
+  letter-spacing: -0.005em;
+}
+.tracking-\[-0\.01em\]{
+  letter-spacing: -0.01em;
+}
+.tracking-\[-0\.02em\]{
+  letter-spacing: -0.02em;
+}
+.tracking-\[0\.04em\]{
+  letter-spacing: 0.04em;
+}
+.tracking-\[0\.06em\]{
+  letter-spacing: 0.06em;
+}
+.tracking-\[0\.08em\]{
+  letter-spacing: 0.08em;
+}
+.tracking-\[0\.12em\]{
+  letter-spacing: 0.12em;
+}
+.tracking-\[0\.14em\]{
+  letter-spacing: 0.14em;
+}
+.tracking-\[0\.16em\]{
+  letter-spacing: 0.16em;
+}
+.tracking-\[0\.1em\]{
+  letter-spacing: 0.1em;
+}
+.tracking-tight{
+  letter-spacing: -0.025em;
+}
+.tracking-widest{
+  letter-spacing: 0.1em;
+}
+.tracking-\[0\.05em\]{
+  letter-spacing: 0.05em;
+}
+.text-\[\<length\>\]{
+  color: <length>;
+}
+.text-accent-foreground{
+  color: hsl(var(--accent-foreground));
+}
+.text-background{
+  color: hsl(var(--background));
+}
+.text-background\/80{
+  color: hsl(var(--background) / 0.8);
+}
+.text-card-foreground{
+  color: hsl(var(--card-foreground));
+}
+.text-current{
+  color: currentColor;
+}
+.text-destructive{
+  color: hsl(var(--destructive));
+}
+.text-destructive-foreground{
+  color: hsl(var(--destructive-foreground));
+}
+.text-foreground{
+  color: hsl(var(--foreground));
+}
+.text-gray-400{
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+.text-gray-700{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+.text-gray-900{
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+.text-muted-foreground{
+  color: hsl(var(--muted-foreground));
+}
+.text-muted-foreground\/60{
+  color: hsl(var(--muted-foreground) / 0.6);
+}
+.text-popover-foreground{
+  color: hsl(var(--popover-foreground));
+}
+.text-primary{
+  color: hsl(var(--primary));
+}
+.text-primary-foreground{
+  color: hsl(var(--primary-foreground));
+}
+.text-secondary-foreground{
+  color: hsl(var(--secondary-foreground));
+}
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.text-white\/80{
+  color: rgb(255 255 255 / 0.8);
+}
+.text-white\/90{
+  color: rgb(255 255 255 / 0.9);
+}
+.text-primary\/30{
+  color: hsl(var(--primary) / 0.3);
+}
+.text-primary\/20{
+  color: hsl(var(--primary) / 0.2);
+}
+.underline{
+  text-decoration-line: underline;
+}
+.line-through{
+  text-decoration-line: line-through;
+}
+.no-underline{
+  text-decoration-line: none;
+}
+.underline-offset-4{
+  text-underline-offset: 4px;
+}
+.opacity-0{
+  opacity: 0;
+}
+.opacity-10{
+  opacity: 0.1;
+}
+.opacity-20{
+  opacity: 0.2;
+}
+.opacity-50{
+  opacity: 0.5;
+}
+.opacity-60{
+  opacity: 0.6;
+}
+.opacity-70{
+  opacity: 0.7;
+}
+.shadow{
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-lg{
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-md{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-sm{
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.outline-none{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.outline{
+  outline-style: solid;
+}
+.ring-0{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.ring-2{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.ring-ring{
+  --tw-ring-color: hsl(var(--ring));
+}
+.ring-offset-background{
+  --tw-ring-offset-color: hsl(var(--background));
+}
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.blur-3xl{
+  --tw-blur: blur(64px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter{
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.backdrop-blur-md{
+  --tw-backdrop-blur: blur(12px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.backdrop-filter{
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-all{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-opacity{
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-shadow{
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-transform{
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-1000{
+  transition-duration: 1000ms;
+}
+.duration-200{
+  transition-duration: 200ms;
+}
+.ease-in{
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.ease-in-out{
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ease-out{
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes enter{
+
+  from{
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+  }
+}
+@keyframes exit{
+
+  to{
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+  }
+}
+.animate-in{
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+.fade-in-0{
+  --tw-enter-opacity: 0;
+}
+.fade-in-80{
+  --tw-enter-opacity: 0.8;
+}
+.zoom-in-95{
+  --tw-enter-scale: .95;
+}
+.duration-1000{
+  animation-duration: 1000ms;
+}
+.duration-200{
+  animation-duration: 200ms;
+}
+.ease-in{
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.ease-in-out{
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ease-out{
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.running{
+  animation-play-state: running;
+}
+.paused{
+  animation-play-state: paused;
+}
+  .animate-in {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+.\[--cell-size\:2rem\]{
+  --cell-size: 2rem;
+}
+
+/* Shared long-form type scale (RUBICON-554). Single source of truth for
+   page titles and rich markdown content; anchored to the site heading range so
+   blog posts match the rest of the customer's site. */
+
+/* Custom utility classes */
+
+/* Unless told otherwise, keep it for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+.file\:border-0::file-selector-button{
+  border-width: 0px;
+}
+.file\:bg-transparent::file-selector-button{
+  background-color: transparent;
+}
+.file\:text-sm::file-selector-button{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.file\:font-medium::file-selector-button{
+  font-weight: 500;
+}
+.file\:text-foreground::file-selector-button{
+  color: hsl(var(--foreground));
+}
+.placeholder\:text-muted-foreground::-moz-placeholder{
+  color: hsl(var(--muted-foreground));
+}
+.placeholder\:text-muted-foreground::placeholder{
+  color: hsl(var(--muted-foreground));
+}
+.placeholder\:text-muted-foreground\/50::-moz-placeholder{
+  color: hsl(var(--muted-foreground) / 0.5);
+}
+.placeholder\:text-muted-foreground\/50::placeholder{
+  color: hsl(var(--muted-foreground) / 0.5);
+}
+.after\:absolute::after{
+  content: var(--tw-content);
+  position: absolute;
+}
+.after\:inset-y-0::after{
+  content: var(--tw-content);
+  top: 0px;
+  bottom: 0px;
+}
+.after\:left-1\/2::after{
+  content: var(--tw-content);
+  left: 50%;
+}
+.after\:w-1::after{
+  content: var(--tw-content);
+  width: 0.25rem;
+}
+.after\:-translate-x-1\/2::after{
+  content: var(--tw-content);
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.first\:rounded-l-md:first-child{
+  border-top-left-radius: calc(var(--radius) - 2px);
+  border-bottom-left-radius: calc(var(--radius) - 2px);
+}
+.first\:border-l:first-child{
+  border-left-width: 1px;
+}
+.last\:mb-0:last-child{
+  margin-bottom: 0px;
+}
+.last\:rounded-r-md:last-child{
+  border-top-right-radius: calc(var(--radius) - 2px);
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+}
+.last\:border-b:last-child{
+  border-bottom-width: 1px;
+}
+.last\:pb-0:last-child{
+  padding-bottom: 0px;
+}
+.hover\:scale-105:hover{
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-\[1\.02\]:hover{
+  --tw-scale-x: 1.02;
+  --tw-scale-y: 1.02;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:border-primary:hover{
+  border-color: hsl(var(--primary));
+}
+.hover\:border-primary\/60:hover{
+  border-color: hsl(var(--primary) / 0.6);
+}
+.hover\:bg-accent:hover{
+  background-color: hsl(var(--accent));
+}
+.hover\:bg-destructive\/80:hover{
+  background-color: hsl(var(--destructive) / 0.8);
+}
+.hover\:bg-destructive\/90:hover{
+  background-color: hsl(var(--destructive) / 0.9);
+}
+.hover\:bg-gray-100:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-gray-50:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-muted:hover{
+  background-color: hsl(var(--muted));
+}
+.hover\:bg-muted\/50:hover{
+  background-color: hsl(var(--muted) / 0.5);
+}
+.hover\:bg-primary:hover{
+  background-color: hsl(var(--primary));
+}
+.hover\:bg-primary\/80:hover{
+  background-color: hsl(var(--primary) / 0.8);
+}
+.hover\:bg-primary\/90:hover{
+  background-color: hsl(var(--primary) / 0.9);
+}
+.hover\:bg-secondary\/80:hover{
+  background-color: hsl(var(--secondary) / 0.8);
+}
+.hover\:text-accent-foreground:hover{
+  color: hsl(var(--accent-foreground));
+}
+.hover\:text-foreground:hover{
+  color: hsl(var(--foreground));
+}
+.hover\:text-gray-900:hover{
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+.hover\:text-muted-foreground:hover{
+  color: hsl(var(--muted-foreground));
+}
+.hover\:text-primary:hover{
+  color: hsl(var(--primary));
+}
+.hover\:underline:hover{
+  text-decoration-line: underline;
+}
+.hover\:opacity-100:hover{
+  opacity: 1;
+}
+.hover\:shadow-lg:hover{
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.hover\:shadow-xl:hover{
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.focus\:border-transparent:focus{
+  border-color: transparent;
+}
+.focus\:border-primary:focus{
+  border-color: hsl(var(--primary));
+}
+.focus\:bg-accent:focus{
+  background-color: hsl(var(--accent));
+}
+.focus\:bg-white:focus{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.focus\:text-accent-foreground:focus{
+  color: hsl(var(--accent-foreground));
+}
+.focus\:outline-none:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus\:ring-2:focus{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus\:ring-gray-200:focus{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity, 1));
+}
+.focus\:ring-ring:focus{
+  --tw-ring-color: hsl(var(--ring));
+}
+.focus\:ring-offset-2:focus{
+  --tw-ring-offset-width: 2px;
+}
+.focus-visible\:outline-none:focus-visible{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus-visible\:ring-1:focus-visible{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus-visible\:ring-2:focus-visible{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus-visible\:ring-ring:focus-visible{
+  --tw-ring-color: hsl(var(--ring));
+}
+.focus-visible\:ring-offset-1:focus-visible{
+  --tw-ring-offset-width: 1px;
+}
+.focus-visible\:ring-offset-2:focus-visible{
+  --tw-ring-offset-width: 2px;
+}
+.focus-visible\:ring-offset-background:focus-visible{
+  --tw-ring-offset-color: hsl(var(--background));
+}
+.disabled\:pointer-events-none:disabled{
+  pointer-events: none;
+}
+.disabled\:cursor-not-allowed:disabled{
+  cursor: not-allowed;
+}
+.disabled\:opacity-50:disabled{
+  opacity: 0.5;
+}
+.group:hover .group-hover\:text-primary{
+  color: hsl(var(--primary));
+}
+.group.toaster .group-\[\.toaster\]\:border-border{
+  border-color: hsl(var(--border));
+}
+.group.toast .group-\[\.toast\]\:bg-muted{
+  background-color: hsl(var(--muted));
+}
+.group.toast .group-\[\.toast\]\:bg-primary{
+  background-color: hsl(var(--primary));
+}
+.group.toaster .group-\[\.toaster\]\:bg-background{
+  background-color: hsl(var(--background));
+}
+.group.toast .group-\[\.toast\]\:text-muted-foreground{
+  color: hsl(var(--muted-foreground));
+}
+.group.toast .group-\[\.toast\]\:text-primary-foreground{
+  color: hsl(var(--primary-foreground));
+}
+.group.toaster .group-\[\.toaster\]\:text-foreground{
+  color: hsl(var(--foreground));
+}
+.group.toaster .group-\[\.toaster\]\:shadow-lg{
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.peer:disabled ~ .peer-disabled\:cursor-not-allowed{
+  cursor: not-allowed;
+}
+.peer:disabled ~ .peer-disabled\:opacity-70{
+  opacity: 0.7;
+}
+.has-\[\:disabled\]\:opacity-50:has(:disabled){
+  opacity: 0.5;
+}
+.aria-disabled\:opacity-50[aria-disabled="true"]{
+  opacity: 0.5;
+}
+.aria-selected\:text-muted-foreground[aria-selected="true"]{
+  color: hsl(var(--muted-foreground));
+}
+.data-\[disabled\=true\]\:pointer-events-none[data-disabled="true"]{
+  pointer-events: none;
+}
+.data-\[disabled\]\:pointer-events-none[data-disabled]{
+  pointer-events: none;
+}
+.data-\[panel-group-direction\=vertical\]\:h-px[data-panel-group-direction="vertical"]{
+  height: 1px;
+}
+.data-\[panel-group-direction\=vertical\]\:w-full[data-panel-group-direction="vertical"]{
+  width: 100%;
+}
+.data-\[side\=bottom\]\:translate-y-1[data-side="bottom"]{
+  --tw-translate-y: 0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[side\=left\]\:-translate-x-1[data-side="left"]{
+  --tw-translate-x: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[side\=right\]\:translate-x-1[data-side="right"]{
+  --tw-translate-x: 0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[side\=top\]\:-translate-y-1[data-side="top"]{
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[state\=checked\]\:translate-x-5[data-state="checked"]{
+  --tw-translate-x: 1.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[state\=unchecked\]\:translate-x-0[data-state="unchecked"]{
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes accordion-up{
+
+  from{
+    height: var(--radix-accordion-content-height);
+  }
+
+  to{
+    height: 0;
+  }
+}
+.data-\[state\=closed\]\:animate-accordion-up[data-state="closed"]{
+  animation: accordion-up 0.2s ease-out;
+}
+@keyframes accordion-down{
+
+  from{
+    height: 0;
+  }
+
+  to{
+    height: var(--radix-accordion-content-height);
+  }
+}
+.data-\[state\=open\]\:animate-accordion-down[data-state="open"]{
+  animation: accordion-down 0.2s ease-out;
+}
+.data-\[panel-group-direction\=vertical\]\:flex-col[data-panel-group-direction="vertical"]{
+  flex-direction: column;
+}
+.data-\[range-end\=true\]\:rounded-md[data-range-end="true"]{
+  border-radius: calc(var(--radius) - 2px);
+}
+.data-\[range-middle\=true\]\:rounded-none[data-range-middle="true"]{
+  border-radius: 0px;
+}
+.data-\[range-start\=true\]\:rounded-md[data-range-start="true"]{
+  border-radius: calc(var(--radius) - 2px);
+}
+.data-\[selected\=true\]\:rounded-none[data-selected="true"]{
+  border-radius: 0px;
+}
+.data-\[range-end\=true\]\:bg-primary[data-range-end="true"]{
+  background-color: hsl(var(--primary));
+}
+.data-\[range-middle\=true\]\:bg-accent[data-range-middle="true"]{
+  background-color: hsl(var(--accent));
+}
+.data-\[range-start\=true\]\:bg-primary[data-range-start="true"]{
+  background-color: hsl(var(--primary));
+}
+.data-\[selected-single\=true\]\:bg-primary[data-selected-single="true"]{
+  background-color: hsl(var(--primary));
+}
+.data-\[selected\=\'true\'\]\:bg-accent[data-selected='true']{
+  background-color: hsl(var(--accent));
+}
+.data-\[state\=active\]\:bg-background[data-state="active"]{
+  background-color: hsl(var(--background));
+}
+.data-\[state\=checked\]\:bg-primary[data-state="checked"]{
+  background-color: hsl(var(--primary));
+}
+.data-\[state\=on\]\:bg-accent[data-state="on"]{
+  background-color: hsl(var(--accent));
+}
+.data-\[state\=open\]\:bg-accent[data-state="open"]{
+  background-color: hsl(var(--accent));
+}
+.data-\[state\=open\]\:bg-accent\/50[data-state="open"]{
+  background-color: hsl(var(--accent) / 0.5);
+}
+.data-\[state\=open\]\:bg-secondary[data-state="open"]{
+  background-color: hsl(var(--secondary));
+}
+.data-\[state\=selected\]\:bg-muted[data-state="selected"]{
+  background-color: hsl(var(--muted));
+}
+.data-\[state\=unchecked\]\:bg-input[data-state="unchecked"]{
+  background-color: hsl(var(--input));
+}
+.data-\[placeholder\]\:text-muted-foreground[data-placeholder]{
+  color: hsl(var(--muted-foreground));
+}
+.data-\[range-end\=true\]\:text-primary-foreground[data-range-end="true"]{
+  color: hsl(var(--primary-foreground));
+}
+.data-\[range-middle\=true\]\:text-accent-foreground[data-range-middle="true"]{
+  color: hsl(var(--accent-foreground));
+}
+.data-\[range-start\=true\]\:text-primary-foreground[data-range-start="true"]{
+  color: hsl(var(--primary-foreground));
+}
+.data-\[selected-single\=true\]\:text-primary-foreground[data-selected-single="true"]{
+  color: hsl(var(--primary-foreground));
+}
+.data-\[selected\=true\]\:text-accent-foreground[data-selected="true"]{
+  color: hsl(var(--accent-foreground));
+}
+.data-\[state\=active\]\:text-foreground[data-state="active"]{
+  color: hsl(var(--foreground));
+}
+.data-\[state\=checked\]\:text-primary-foreground[data-state="checked"]{
+  color: hsl(var(--primary-foreground));
+}
+.data-\[state\=on\]\:text-accent-foreground[data-state="on"]{
+  color: hsl(var(--accent-foreground));
+}
+.data-\[state\=open\]\:text-accent-foreground[data-state="open"]{
+  color: hsl(var(--accent-foreground));
+}
+.data-\[state\=open\]\:text-muted-foreground[data-state="open"]{
+  color: hsl(var(--muted-foreground));
+}
+.data-\[disabled\=true\]\:opacity-50[data-disabled="true"]{
+  opacity: 0.5;
+}
+.data-\[disabled\]\:opacity-50[data-disabled]{
+  opacity: 0.5;
+}
+.data-\[state\=active\]\:shadow-sm[data-state="active"]{
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.data-\[state\=closed\]\:duration-300[data-state="closed"]{
+  transition-duration: 300ms;
+}
+.data-\[state\=open\]\:duration-500[data-state="open"]{
+  transition-duration: 500ms;
+}
+.data-\[motion\^\=from-\]\:animate-in[data-motion^="from-"]{
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+.data-\[state\=open\]\:animate-in[data-state="open"]{
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+.data-\[state\=visible\]\:animate-in[data-state="visible"]{
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+.data-\[motion\^\=to-\]\:animate-out[data-motion^="to-"]{
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+.data-\[state\=closed\]\:animate-out[data-state="closed"]{
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+.data-\[state\=hidden\]\:animate-out[data-state="hidden"]{
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+.data-\[motion\^\=from-\]\:fade-in[data-motion^="from-"]{
+  --tw-enter-opacity: 0;
+}
+.data-\[motion\^\=to-\]\:fade-out[data-motion^="to-"]{
+  --tw-exit-opacity: 0;
+}
+.data-\[state\=closed\]\:fade-out-0[data-state="closed"]{
+  --tw-exit-opacity: 0;
+}
+.data-\[state\=hidden\]\:fade-out[data-state="hidden"]{
+  --tw-exit-opacity: 0;
+}
+.data-\[state\=open\]\:fade-in-0[data-state="open"]{
+  --tw-enter-opacity: 0;
+}
+.data-\[state\=visible\]\:fade-in[data-state="visible"]{
+  --tw-enter-opacity: 0;
+}
+.data-\[state\=closed\]\:zoom-out-95[data-state="closed"]{
+  --tw-exit-scale: .95;
+}
+.data-\[state\=open\]\:zoom-in-90[data-state="open"]{
+  --tw-enter-scale: .9;
+}
+.data-\[state\=open\]\:zoom-in-95[data-state="open"]{
+  --tw-enter-scale: .95;
+}
+.data-\[motion\=from-end\]\:slide-in-from-right-52[data-motion="from-end"]{
+  --tw-enter-translate-x: 13rem;
+}
+.data-\[motion\=from-start\]\:slide-in-from-left-52[data-motion="from-start"]{
+  --tw-enter-translate-x: -13rem;
+}
+.data-\[motion\=to-end\]\:slide-out-to-right-52[data-motion="to-end"]{
+  --tw-exit-translate-x: 13rem;
+}
+.data-\[motion\=to-start\]\:slide-out-to-left-52[data-motion="to-start"]{
+  --tw-exit-translate-x: -13rem;
+}
+.data-\[side\=bottom\]\:slide-in-from-top-2[data-side="bottom"]{
+  --tw-enter-translate-y: -0.5rem;
+}
+.data-\[side\=left\]\:slide-in-from-right-2[data-side="left"]{
+  --tw-enter-translate-x: 0.5rem;
+}
+.data-\[side\=right\]\:slide-in-from-left-2[data-side="right"]{
+  --tw-enter-translate-x: -0.5rem;
+}
+.data-\[side\=top\]\:slide-in-from-bottom-2[data-side="top"]{
+  --tw-enter-translate-y: 0.5rem;
+}
+.data-\[state\=closed\]\:slide-out-to-bottom[data-state="closed"]{
+  --tw-exit-translate-y: 100%;
+}
+.data-\[state\=closed\]\:slide-out-to-left[data-state="closed"]{
+  --tw-exit-translate-x: -100%;
+}
+.data-\[state\=closed\]\:slide-out-to-left-1\/2[data-state="closed"]{
+  --tw-exit-translate-x: -50%;
+}
+.data-\[state\=closed\]\:slide-out-to-right[data-state="closed"]{
+  --tw-exit-translate-x: 100%;
+}
+.data-\[state\=closed\]\:slide-out-to-top[data-state="closed"]{
+  --tw-exit-translate-y: -100%;
+}
+.data-\[state\=closed\]\:slide-out-to-top-\[48\%\][data-state="closed"]{
+  --tw-exit-translate-y: -48%;
+}
+.data-\[state\=open\]\:slide-in-from-bottom[data-state="open"]{
+  --tw-enter-translate-y: 100%;
+}
+.data-\[state\=open\]\:slide-in-from-left[data-state="open"]{
+  --tw-enter-translate-x: -100%;
+}
+.data-\[state\=open\]\:slide-in-from-left-1\/2[data-state="open"]{
+  --tw-enter-translate-x: -50%;
+}
+.data-\[state\=open\]\:slide-in-from-right[data-state="open"]{
+  --tw-enter-translate-x: 100%;
+}
+.data-\[state\=open\]\:slide-in-from-top[data-state="open"]{
+  --tw-enter-translate-y: -100%;
+}
+.data-\[state\=open\]\:slide-in-from-top-\[48\%\][data-state="open"]{
+  --tw-enter-translate-y: -48%;
+}
+.data-\[state\=closed\]\:duration-300[data-state="closed"]{
+  animation-duration: 300ms;
+}
+.data-\[state\=open\]\:duration-500[data-state="open"]{
+  animation-duration: 500ms;
+}
+  .data-\[motion\^\=from-\]\:animate-in[data-motion^="from-"] {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+  .data-\[state\=open\]\:animate-in[data-state="open"] {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+  .data-\[state\=visible\]\:animate-in[data-state="visible"] {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  .data-\[motion\^\=from-\]\:fade-in[data-motion^="from-"] {
+    animation-name: fadeIn;
+  }
+
+  .data-\[state\=visible\]\:fade-in[data-state="visible"] {
+    animation-name: fadeIn;
+  }
+.data-\[panel-group-direction\=vertical\]\:after\:left-0[data-panel-group-direction="vertical"]::after{
+  content: var(--tw-content);
+  left: 0px;
+}
+.data-\[panel-group-direction\=vertical\]\:after\:h-1[data-panel-group-direction="vertical"]::after{
+  content: var(--tw-content);
+  height: 0.25rem;
+}
+.data-\[panel-group-direction\=vertical\]\:after\:w-full[data-panel-group-direction="vertical"]::after{
+  content: var(--tw-content);
+  width: 100%;
+}
+.data-\[panel-group-direction\=vertical\]\:after\:-translate-y-1\/2[data-panel-group-direction="vertical"]::after{
+  content: var(--tw-content);
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[panel-group-direction\=vertical\]\:after\:translate-x-0[data-panel-group-direction="vertical"]::after{
+  content: var(--tw-content);
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.data-\[state\=open\]\:hover\:bg-accent:hover[data-state="open"]{
+  background-color: hsl(var(--accent));
+}
+.data-\[state\=open\]\:focus\:bg-accent:focus[data-state="open"]{
+  background-color: hsl(var(--accent));
+}
+.group\/day[data-focused="true"] .group-data-\[focused\=true\]\/day\:relative{
+  position: relative;
+}
+.group\/day[data-focused="true"] .group-data-\[focused\=true\]\/day\:z-10{
+  z-index: 10;
+}
+.group[data-state="open"] .group-data-\[state\=open\]\:rotate-180{
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group\/day[data-focused="true"] .group-data-\[focused\=true\]\/day\:border-ring{
+  border-color: hsl(var(--ring));
+}
+.group\/day[data-focused="true"] .group-data-\[focused\=true\]\/day\:ring-\[3px\]{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.group\/day[data-focused="true"] .group-data-\[focused\=true\]\/day\:ring-ring\/50{
+  --tw-ring-color: hsl(var(--ring) / 0.5);
+}
+@media (min-width: 640px){
+
+  .sm\:mt-0{
+    margin-top: 0px;
+  }
+
+  .sm\:block{
+    display: block;
+  }
+
+  .sm\:max-w-sm{
+    max-width: 24rem;
+  }
+
+  .sm\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:flex-row{
+    flex-direction: row;
+  }
+
+  .sm\:items-center{
+    align-items: center;
+  }
+
+  .sm\:justify-end{
+    justify-content: flex-end;
+  }
+
+  .sm\:gap-2\.5{
+    gap: 0.625rem;
+  }
+
+  .sm\:space-x-2 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .sm\:rounded-lg{
+    border-radius: var(--radius);
+  }
+
+  .sm\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:text-left{
+    text-align: left;
+  }
+}
+@media (min-width: 768px){
+
+  .md\:absolute{
+    position: absolute;
+  }
+
+  .md\:mt-2{
+    margin-top: 0.5rem;
+  }
+
+  .md\:flex{
+    display: flex;
+  }
+
+  .md\:hidden{
+    display: none;
+  }
+
+  .md\:w-\[var\(--radix-navigation-menu-viewport-width\)\]{
+    width: var(--radix-navigation-menu-viewport-width);
+  }
+
+  .md\:w-auto{
+    width: auto;
+  }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-5{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-\[160px_1fr\]{
+    grid-template-columns: 160px 1fr;
+  }
+
+  .md\:flex-row{
+    flex-direction: row;
+  }
+
+  .md\:flex-col{
+    flex-direction: column;
+  }
+
+  .md\:gap-1\.5{
+    gap: 0.375rem;
+  }
+
+  .md\:border-r{
+    border-right-width: 1px;
+  }
+
+  .md\:border-t-0{
+    border-top-width: 0px;
+  }
+
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .md\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .md\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+@media (min-width: 1024px){
+
+  .lg\:static{
+    position: static;
+  }
+
+  .lg\:inset-0{
+    inset: 0px;
+  }
+
+  .lg\:block{
+    display: block;
+  }
+
+  .lg\:flex{
+    display: flex;
+  }
+
+  .lg\:hidden{
+    display: none;
+  }
+
+  .lg\:translate-x-0{
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .lg\:grid-cols-\[1\.05fr_0\.95fr\]{
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .lg\:grid-cols-\[280px_1fr\]{
+    grid-template-columns: 280px 1fr;
+  }
+
+  .lg\:grid-cols-\[1fr_320px\]{
+    grid-template-columns: 1fr 320px;
+  }
+
+  .lg\:grid-cols-\[1fr_380px\]{
+    grid-template-columns: 1fr 380px;
+  }
+
+  .lg\:p-6{
+    padding: 1.5rem;
+  }
+
+  .lg\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .lg\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:pt-1{
+    padding-top: 0.25rem;
+  }
+}
+@media (prefers-color-scheme: dark){
+
+  .dark\:border-destructive{
+    border-color: hsl(var(--destructive));
+  }
+}
+.\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md:first-child[data-selected=true] button{
+  border-top-left-radius: calc(var(--radius) - 2px);
+  border-bottom-left-radius: calc(var(--radius) - 2px);
+}
+.\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role=checkbox]){
+  padding-right: 0px;
+}
+.\[\&\:last-child\[data-selected\=true\]_button\]\:rounded-r-md:last-child[data-selected=true] button{
+  border-top-right-radius: calc(var(--radius) - 2px);
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+}
+.\[\&\>\*\]\:list-item>*{
+  display: list-item;
+}
+.\[\&\>span\]\:line-clamp-1>span{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.\[\&\>span\]\:text-xs>span{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.\[\&\>span\]\:opacity-70>span{
+  opacity: 0.7;
+}
+.\[\&\>svg\+div\]\:translate-y-\[-3px\]>svg+div{
+  --tw-translate-y: -3px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.\[\&\>svg\]\:absolute>svg{
+  position: absolute;
+}
+.\[\&\>svg\]\:left-4>svg{
+  left: 1rem;
+}
+.\[\&\>svg\]\:top-4>svg{
+  top: 1rem;
+}
+.\[\&\>svg\]\:size-3\.5>svg{
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.\[\&\>svg\]\:h-3\.5>svg{
+  height: 0.875rem;
+}
+.\[\&\>svg\]\:w-3\.5>svg{
+  width: 0.875rem;
+}
+.\[\&\>svg\]\:text-destructive>svg{
+  color: hsl(var(--destructive));
+}
+.\[\&\>svg\]\:text-foreground>svg{
+  color: hsl(var(--foreground));
+}
+.\[\&\>svg\]\:text-muted-foreground>svg{
+  color: hsl(var(--muted-foreground));
+}
+.\[\&\>svg\~\*\]\:pl-7>svg~*{
+  padding-left: 1.75rem;
+}
+.\[\&\>tr\]\:last\:border-b-0:last-child>tr{
+  border-bottom-width: 0px;
+}
+.\[\&\[data-panel-group-direction\=vertical\]\>div\]\:rotate-90[data-panel-group-direction=vertical]>div{
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state=open]>svg{
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.\[\&_\[cmdk-group-heading\]\]\:px-2 [cmdk-group-heading]{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.\[\&_\[cmdk-group-heading\]\]\:py-1\.5 [cmdk-group-heading]{
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.\[\&_\[cmdk-group-heading\]\]\:text-xs [cmdk-group-heading]{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.\[\&_\[cmdk-group-heading\]\]\:font-medium [cmdk-group-heading]{
+  font-weight: 500;
+}
+.\[\&_\[cmdk-group-heading\]\]\:text-muted-foreground [cmdk-group-heading]{
+  color: hsl(var(--muted-foreground));
+}
+.\[\&_\[cmdk-group\]\:not\(\[hidden\]\)_\~\[cmdk-group\]\]\:pt-0 [cmdk-group]:not([hidden]) ~[cmdk-group]{
+  padding-top: 0px;
+}
+.\[\&_\[cmdk-group\]\]\:px-2 [cmdk-group]{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.\[\&_\[cmdk-input-wrapper\]_svg\]\:h-5 [cmdk-input-wrapper] svg{
+  height: 1.25rem;
+}
+.\[\&_\[cmdk-input-wrapper\]_svg\]\:w-5 [cmdk-input-wrapper] svg{
+  width: 1.25rem;
+}
+.\[\&_\[cmdk-input\]\]\:h-12 [cmdk-input]{
+  height: 3rem;
+}
+.\[\&_\[cmdk-item\]\]\:px-2 [cmdk-item]{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.\[\&_\[cmdk-item\]\]\:py-3 [cmdk-item]{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.\[\&_\[cmdk-item\]_svg\]\:h-5 [cmdk-item] svg{
+  height: 1.25rem;
+}
+.\[\&_\[cmdk-item\]_svg\]\:w-5 [cmdk-item] svg{
+  width: 1.25rem;
+}
+.\[\&_p\]\:leading-relaxed p{
+  line-height: 1.625;
+}
+.\[\&_svg\]\:pointer-events-none svg{
+  pointer-events: none;
+}
+.\[\&_svg\]\:size-4 svg{
+  width: 1rem;
+  height: 1rem;
+}
+.\[\&_svg\]\:shrink-0 svg{
+  flex-shrink: 0;
+}
+.\[\&_tr\:last-child\]\:border-0 tr:last-child{
+  border-width: 0px;
+}
+.\[\&_tr\]\:border-b tr{
+  border-bottom-width: 1px;
+}
+[data-slot=card-content] .\[\[data-slot\=card-content\]_\&\]\:bg-transparent{
+  background-color: transparent;
+}
+[data-slot=popover-content] .\[\[data-slot\=popover-content\]_\&\]\:bg-transparent{
+  background-color: transparent;
+}
+</style><title>Venkatachalam Palaniappan — Chief Digital Officer &amp; Enterprise Transformation Architect</title><link href="https://venkey.me/" rel="canonical"/><meta content="20+ years architecting ERP, AI, Cloud, MES, IoT, RPA and Cybersecurity ecosystems across India, Asia-Pacific and Europe. Open to CDO / VP Digital roles." name="description"/><meta content="Venkatachalam Palaniappan — Chief Digital Officer &amp; Enterprise Transformation Architect" property="og:title"/><meta content="20+ years architecting ERP, AI, Cloud, MES, IoT, RPA and Cybersecurity ecosystems across India, Asia-Pacific and Europe. Open to CDO / VP Digital roles." property="og:description"/><meta content="https://venkey.me" property="og:url"/><meta content="profile" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Venkatachalam Palaniappan — Chief Digital Officer &amp; Enterprise Transformation Architect" name="twitter:title"/><meta content="20+ years architecting ERP, AI, Cloud, MES, IoT, RPA and Cybersecurity ecosystems across India, Asia-Pacific and Europe. Open to CDO / VP Digital roles." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://venkey.me/#website","name":"venkey.me","url":"https://venkey.me/"},{"@type":"Person","@id":"https://venkey.me/#person","name":"Venkatachalam Palaniappan","url":"https://venkey.me/","jobTitle":"Chief Digital Officer & Enterprise Transformation Architect","email":"pvenkat.dxinnovate@gmail.com","telephone":"+91-9766331946","address":{"@type":"PostalAddress","addressLocality":"Coimbatore","addressCountry":"IN"},"sameAs":["https://linkedin.com/in/venkatachalam-dtl/"]},{"@type":"WebPage","@id":"https://venkey.me/#webpage","url":"https://venkey.me/","isPartOf":{"@id":"https://venkey.me/#website"},"about":{"@id":"https://venkey.me/#person"},"datePublished":"2026-08-11","dateModified":"2026-08-11"}]}</script><meta content="index, follow" name="robots"/><link href="https://venkey.me/" rel="canonical"/><meta content="#0f172a" name="theme-color"/><link href="/favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<body class="">
+<div class="fs-unmask-airo-app-builder" id="app"><div class="min-h-screen bg-background flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border"><div class="max-w-[1180px] mx-auto px-8 h-[68px] flex items-center justify-between"><a class="flex items-center gap-2.5 no-underline" href="#top"><svg aria-label="Venkatachalam Palaniappan monogram logo" class="flex-shrink-0" height="34" role="img" viewbox="0 0 40 40" width="34" xmlns="http://www.w3.org/2000/svg"><polygon fill="#fff" points="20,2 35,11 35,29 20,38 5,29 5,11" stroke="#111" stroke-width="1.4"></polygon><polygon fill="none" opacity="0.9" points="20,9 29,14.5 29,25.5 20,31 11,25.5 11,14.5" stroke="hsl(var(--primary))" stroke-width="1.2"></polygon><circle cx="20" cy="20" fill="#111" r="1.6"></circle><circle cx="20" cy="9" fill="#111" r="1.4"></circle><circle cx="29" cy="14.5" fill="#111" r="1.4"></circle><circle cx="29" cy="25.5" fill="#111" r="1.4"></circle><circle cx="20" cy="31" fill="#111" r="1.4"></circle><circle cx="11" cy="25.5" fill="#111" r="1.4"></circle><circle cx="11" cy="14.5" fill="#111" r="1.4"></circle><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="20" y1="20" y2="9"></line><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="29" y1="20" y2="14.5"></line><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="11" y1="20" y2="25.5"></line><text fill="#111" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle" x="20" y="23">VP</text></svg><span class="font-mono text-[13px] tracking-[0.12em] uppercase text-foreground font-medium hidden sm:block">VENKATACHALAM PALANIAPPAN</span></a><nav aria-label="Main navigation" class="hidden md:flex items-center gap-7"><a class="font-mono text-[12px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary transition-colors duration-200 no-underline" href="#profile">About</a><a class="font-mono text-[12px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary transition-colors duration-200 no-underline" href="#pillars">Expertise</a><a class="font-mono text-[12px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary transition-colors duration-200 no-underline" href="#impact">Case Studies</a><a class="font-mono text-[12px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary transition-colors duration-200 no-underline" href="#impact">Insights</a><a class="font-mono text-[12px] tracking-[0.08em] uppercase text-muted-foreground hover:text-primary transition-colors duration-200 no-underline" href="#contact">Contact</a></nav><div class="hidden lg:flex items-center gap-2 font-mono text-[11px] tracking-[0.06em] uppercase text-primary border border-primary/30 px-3 py-1.5 rounded-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" style="box-shadow: 0 0 8px hsl(var(--primary) / 0.5);"></span>Solution Forge / ThinkScale</div><button aria-expanded="false" aria-label="Open menu" class="md:hidden flex flex-col gap-1.5 p-2"><span class="block h-px w-6 bg-foreground transition-all duration-200"></span><span class="block h-px w-6 bg-foreground transition-all duration-200"></span><span class="block h-px w-6 bg-foreground transition-all duration-200"></span></button></div></header><main id="top"><section class="pt-[88px] pb-[60px] border-b border-border" id="profile"><div class="max-w-[1180px] mx-auto px-8"><div class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center"><div><div class="flex items-center gap-2.5 font-mono text-[12px] tracking-[0.16em] uppercase text-primary mb-5" style="opacity: 1; transform: none;"><span class="w-6 h-px bg-primary inline-block"></span><span style="white-space: pre-line;">Enterprise Transformation Architect / CHIEF DIGITAL OFFICER</span></div><h1 class="font-heading font-semibold leading-[1.08] tracking-[-0.01em] text-foreground mb-6" style="font-size: clamp(2.4rem, 5.2vw, 4rem); font-optical-sizing: auto; opacity: 1; transform: none;">I build the <em class="not-italic text-primary">digital nervous systems</em> that let businesses scale, compete, and win.</h1><p class="text-[17px] text-muted-foreground max-w-[52ch] mb-8 leading-relaxed" style="white-space: pre-line; opacity: 1; transform: none;">20+ years architecting ERP, AI, Cloud, MES, IoT, RPA and Cybersecurity ecosystems across India, Asia-Pacific and Europe — entering not as a vendor of IT services, but as a co-owner of business outcomes.</p><div class="flex flex-wrap gap-3.5" style="opacity: 1; transform: none;"><a class="font-mono text-[13px] tracking-[0.04em] uppercase px-6 py-3.5 bg-foreground text-background hover:bg-primary transition-colors duration-200 rounded-sm inline-flex items-center gap-2.5 no-underline font-semibold" href="mailto:pvenkat.dxinnovate@gmail.com" style="white-space: pre-line;">Email Venkatachalam →</a><a class="font-mono text-[13px] tracking-[0.04em] uppercase px-6 py-3.5 border border-foreground text-foreground hover:border-primary hover:text-primary transition-colors duration-200 rounded-sm inline-flex items-center gap-2.5 no-underline" href="https://linkedin.com/in/venkatachalam-dtl/" rel="noopener noreferrer" style="white-space: pre-line;" target="_blank">View LinkedIn</a></div></div><div style="opacity: 1; transform: none;"><div class="relative border border-border bg-muted/40 rounded-sm p-3"><div class="absolute top-[-1px] left-[-1px] w-3.5 h-3.5 border-t-2 border-l-2 border-foreground opacity-70"></div><div class="absolute top-[-1px] right-[-1px] w-3.5 h-3.5 border-t-2 border-r-2 border-foreground opacity-70"></div><div class="absolute bottom-[-1px] left-[-1px] w-3.5 h-3.5 border-b-2 border-l-2 border-foreground opacity-70"></div><div class="absolute bottom-[-1px] right-[-1px] w-3.5 h-3.5 border-b-2 border-r-2 border-foreground opacity-70"></div><p class="font-mono text-[10px] text-muted-foreground tracking-[0.1em] uppercase mb-1.5 px-1">ENTERPRISE DIGITAL ARCHITECTURE, LIVE SIGNAL PATH</p><svg aria-label="Diagram showing a central digital transformation node connected to ERP, AI and ML, Cloud, MES, IoT, RPA, and Cybersecurity nodes with animated signal flow" class="w-full h-auto block" role="img" viewbox="0 0 440 420" xmlns="http://www.w3.org/2000/svg"><style>
+          .flow-pulse {
+            stroke: hsl(var(--primary));
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-dasharray: 6 220;
+            animation: flowAnim 5.5s linear infinite;
+          }
+          @keyframes flowAnim { to { stroke-dashoffset: -450; } }
+          @media (prefers-reduced-motion: reduce) {
+            .flow-pulse { animation: none; }
+          }
+        </style><g fill="none" opacity="0.2" stroke="hsl(var(--foreground))" stroke-width="1.2"><path d="M220,210 L90,70"></path><path d="M220,210 L220,50"></path><path d="M220,210 L350,70"></path><path d="M220,210 L60,210"></path><path d="M220,210 L380,210"></path><path d="M220,210 L90,350"></path><path d="M220,210 L350,350"></path></g><g><path class="flow-pulse" d="M220,210 L90,70" style="animation-delay: 0s;"></path><path class="flow-pulse" d="M220,210 L220,50" style="animation-delay: 0.6s;"></path><path class="flow-pulse" d="M220,210 L350,70" style="animation-delay: 1.2s;"></path><path class="flow-pulse" d="M220,210 L60,210" style="animation-delay: 1.8s;"></path><path class="flow-pulse" d="M220,210 L380,210" style="animation-delay: 2.4s;"></path><path class="flow-pulse" d="M220,210 L90,350" style="animation-delay: 3s;"></path><path class="flow-pulse" d="M220,210 L350,350" style="animation-delay: 3.6s;"></path></g><g><circle cx="90" cy="70" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="90" y="74">ERP</text></g><g><circle cx="220" cy="50" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="220" y="54">AI/ML</text></g><g><circle cx="350" cy="70" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="350" y="74">CLOUD</text></g><g><circle cx="60" cy="210" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="60" y="214">MES</text></g><g><circle cx="380" cy="210" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="380" y="214">IOT</text></g><g><circle cx="90" cy="350" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="90" y="354">RPA</text></g><g><circle cx="350" cy="350" fill="hsl(var(--background))" r="26" stroke="hsl(var(--foreground))" stroke-width="1.4"></circle><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" style="text-transform: uppercase; letter-spacing: 0.04em;" text-anchor="middle" x="350" y="347">CYBER-</text><text fill="hsl(var(--muted-foreground))" font-family="monospace" font-size="11" letter-spacing="0.04em" text-anchor="middle" x="350" y="361">SEC</text></g><circle cx="220" cy="210" fill="hsl(var(--foreground))" r="42" stroke="hsl(var(--primary))" stroke-width="1.6"></circle><text fill="hsl(var(--background))" font-family="monospace" font-size="12" font-weight="600" text-anchor="middle" x="220" y="206">VP</text><text fill="hsl(var(--background))" font-family="monospace" font-size="9" font-weight="600" letter-spacing="0.06em" text-anchor="middle" x="220" y="222">CDO CORE</text></svg></div></div></div></div></section><div class="border-b border-border bg-muted/30"><div class="max-w-[1180px] mx-auto px-8"><div class="grid grid-cols-2 md:grid-cols-5"><div class="px-5 py-6 border-t border-border md:border-r md:border-t-0 border-r" style="opacity: 1; transform: none;"><div class="font-heading font-medium text-primary leading-none tracking-[-0.02em] mb-1.5" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">20+</div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.06em] mt-1.5">Years leading transformation</div></div><div class="px-5 py-6 border-t border-border md:border-r md:border-t-0" style="opacity: 1; transform: none;"><div class="font-heading font-medium text-primary leading-none tracking-[-0.02em] mb-1.5" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">135+</div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.06em] mt-1.5">Locations digitized</div></div><div class="px-5 py-6 border-t border-border md:border-r md:border-t-0 border-r" style="opacity: 1; transform: none;"><div class="font-heading font-medium text-primary leading-none tracking-[-0.02em] mb-1.5" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">45%</div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.06em] mt-1.5">Operational efficiency gain</div></div><div class="px-5 py-6 border-t border-border md:border-r md:border-t-0" style="opacity: 1; transform: none;"><div class="font-heading font-medium text-primary leading-none tracking-[-0.02em] mb-1.5" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">80%</div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.06em] mt-1.5">Downtime reduction via AI</div></div><div class="px-5 py-6 border-t border-border md:border-t-0" style="opacity: 1; transform: none;"><div class="font-heading font-medium text-primary leading-none tracking-[-0.02em] mb-1.5" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">100%</div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.06em] mt-1.5">Cybersecurity audit compliance</div></div></div></div></div><div class="border-t border-b border-border bg-foreground py-[70px]"><div class="max-w-[1180px] mx-auto px-8"><div class="relative max-w-[820px] mx-auto text-center px-6 py-9" style="opacity: 0;"><div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/60"></div><div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/60"></div><p class="font-heading font-normal italic text-background leading-[1.3]" style="font-size: clamp(1.3rem, 3.2vw, 2.1rem);">"<span style="white-space: pre-line;">I don't follow digital transformation trends. I set the direction organizations move toward.</span>"</p><div class="mt-5 font-mono text-[12px] text-primary tracking-[0.08em] uppercase">— Venkatachalam Palaniappan</div></div></div></div><section class="py-[84px]" id="pillars"><div class="max-w-[1180px] mx-auto px-8"><div class="mb-12 max-w-[70ch]"><div class="flex items-center gap-2.5 font-mono text-[12px] text-primary uppercase tracking-[0.14em] mb-3.5"><span class="w-6 h-px bg-primary inline-block"></span>Ownership Areas</div><h2 class="font-heading font-medium text-foreground tracking-[-0.01em]" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">Strategic Pillars</h2></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border"><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">STRAT</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Strategic thinking &amp; digital roadmap architecture</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">AI</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">AI, ML &amp; predictive analytics leadership</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">TEAM</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Cross-functional team building &amp; CXO advisory</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">RISK</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Resilience, risk &amp; change management</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">STACK</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Digital fluency: ERP, CRM, Cloud, IoT, RPA, MES</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">DATA</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Enterprise data governance &amp; BI frameworks</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">4.0</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Industry 4.0 &amp; smart manufacturing integration</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">SEC</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Cybersecurity governance &amp; compliance</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">SCALE</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Platform scalability &amp; SaaS modernization</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">PPL</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Workforce digital capability development</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">P&amp;L</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">P&amp;L impact orientation &amp; budget leadership</span></div><div class="bg-background px-7 py-6 flex items-start gap-4" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-[11px] text-primary border border-primary/35 px-1.5 py-0.5 rounded-sm flex-shrink-0 mt-0.5" style="white-space: pre-line;">VNDR</span><span class="text-[14.5px] text-foreground leading-relaxed" style="white-space: pre-line;">Vendor, partner &amp; stakeholder ecosystem management</span></div></div></div></section><section class="py-[84px] border-t border-border" id="impact"><div class="max-w-[1180px] mx-auto px-8"><div class="mb-12 max-w-[70ch]"><div class="flex items-center gap-2.5 font-mono text-[12px] text-primary uppercase tracking-[0.14em] mb-3.5"><span class="w-6 h-px bg-primary inline-block"></span>Built, Owned, Delivered</div><h2 class="font-heading font-medium text-foreground tracking-[-0.01em]" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">Signature Impact</h2></div><div class="flex flex-col"><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Ecosystem</div><div class="text-[15px] text-muted-foreground leading-relaxed">Architected enterprise-wide digital ecosystems across ERP, CRM, Cloud, Mobility, IoT &amp; Automation — elevating digital maturity by 40–50% across multiple business units as a permanent competitive shift, not a project.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Roadmap</div><div class="text-[15px] text-muted-foreground leading-relaxed">Designed multi-year digital transformation roadmaps built for scale and enterprise-wide ownership — frameworks that outlasted my own tenure.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">AI / RPA</div><div class="text-[15px] text-muted-foreground leading-relaxed">Championed AI-first thinking before it was mainstream — predictive analytics, RPA bots and workflow automation delivering 45% efficiency gains and up to 80% reduction in critical system downtime.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">BI</div><div class="text-[15px] text-muted-foreground leading-relaxed">Built real-time executive intelligence — analytics and KPI dashboards giving C-suite leaders decision clarity, improving strategic execution velocity by 10–15%.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Security</div><div class="text-[15px] text-muted-foreground leading-relaxed">Achieved 100% cybersecurity compliance across all manufacturing IT systems — identity access management, audit frameworks and risk controls at enterprise scale.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Industry 4.0</div><div class="text-[15px] text-muted-foreground leading-relaxed">Digitized factory floors across Asia — MES, IoT, RFID and Industry 4.0 systems integrated into Bosch plants, raising OEE by 16% with multi-plant production visibility.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Global</div><div class="text-[15px] text-muted-foreground leading-relaxed">Scaled cross-border transformation programs across India, Asia-Pacific and Europe — one unified digital governance language across operations, engineering and finance.</div></div><div class="grid grid-cols-[110px_1fr] gap-6 py-5 border-t border-border last:border-b" style="opacity: 0; transform: translateY(20px);"><div class="font-mono text-[11px] text-primary uppercase tracking-[0.06em] pt-0.5">Talent</div><div class="text-[15px] text-muted-foreground leading-relaxed">Built and mentored high-performance digital teams — lasting organizational capability in cloud, automation, analytics and cybersecurity beyond any single project cycle.</div></div></div></div></section><section class="py-[84px] border-t border-border" id="experience"><div class="max-w-[1180px] mx-auto px-8"><div class="mb-12 max-w-[70ch]"><div class="flex items-center gap-2.5 font-mono text-[12px] text-primary uppercase tracking-[0.14em] mb-3.5"><span class="w-6 h-px bg-primary inline-block"></span>Professional Experience</div><h2 class="font-heading font-medium text-foreground tracking-[-0.01em]" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">Where the Systems Were Built</h2></div><div class="relative pl-7 border-l border-border"><div class="relative pb-14 last:pb-0" style="opacity: 0; transform: translateY(20px);"><div class="absolute -left-[33px] top-1 w-2.5 h-2.5 rounded-full border-2 border-primary bg-primary" style="box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);"></div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.08em] mb-1.5">Apr 2022 — Present</div><div class="font-heading font-medium text-foreground tracking-[-0.005em] mb-0.5" style="font-size: 1.5rem;">Head of IT &amp; Digital Transformation</div><div class="font-mono text-[13px] text-primary mb-3.5">Consolidate Private Limited · Coimbatore, India</div><p class="text-[13.5px] text-muted-foreground italic mb-3.5 max-w-[65ch]" style="white-space: pre-line;">Mandate: build the digital backbone of a 135+ location retail enterprise from the ground up — scalable platforms, AI-powered operations, and a governance culture built for long-term growth.</p><ul class="flex flex-col gap-2.5 max-w-[68ch]"><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Conceived and executed a full-stack digital strategy — ERP, CRM, RPA, Cloud, Mobility and Analytics — across 135+ locations into one scalable operating model.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Standardized SAP Public Cloud, CRM, POS and omnichannel analytics as the organization's foundational digital architecture.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Drove AI-based analytics and automation, achieving 45% improvement in operational efficiency.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Built enterprise-wide data governance and real-time KPI dashboards, moving decision-making from reactive to anticipatory.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Strengthened cybersecurity posture through identity management and policy compliance for a fast-growing distributed operation.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Recruited and mentored a cross-functional IT/digital team, embedding transformation ownership into the organization.</span></li></ul></div><div class="relative pb-14 last:pb-0" style="opacity: 0; transform: translateY(20px);"><div class="absolute -left-[33px] top-1 w-2.5 h-2.5 rounded-full border-2 border-foreground bg-background"></div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.08em] mb-1.5">Jul 2019 — Apr 2022</div><div class="font-heading font-medium text-foreground tracking-[-0.005em] mb-0.5" style="font-size: 1.5rem;">Deputy General Manager — IT</div><div class="font-mono text-[13px] text-primary mb-3.5">Ambattur Fashion India Pvt Ltd · Chennai, India</div><p class="text-[13.5px] text-muted-foreground italic mb-3.5 max-w-[65ch]" style="white-space: pre-line;">Mandate: modernize technology strategy to meet global retail partners (H&amp;M, GAP, Levi's) and establish supply chain, quality and operational digital superiority.</p><ul class="flex flex-col gap-2.5 max-w-[68ch]"><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Designed the company's future-state digital operating architecture to meet global compliance standards.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Implemented IoT-driven automation and digital QC systems — 35% productivity improvement, 30% shorter production cycle time.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Deployed BI dashboards enabling data-led manufacturing and strengthened cyber governance across production systems.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Served as the IT-to-leadership translator, aligning technology investment with strategic priorities.</span></li></ul></div><div class="relative pb-14 last:pb-0" style="opacity: 0; transform: translateY(20px);"><div class="absolute -left-[33px] top-1 w-2.5 h-2.5 rounded-full border-2 border-foreground bg-background"></div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.08em] mb-1.5">Feb 2018 — Jun 2019</div><div class="font-heading font-medium text-foreground tracking-[-0.005em] mb-0.5" style="font-size: 1.5rem;">IT Manager</div><div class="font-mono text-[13px] text-primary mb-3.5">Flextronics India Pvt Ltd · Chennai, India</div><p class="text-[13.5px] text-muted-foreground italic mb-3.5 max-w-[65ch]" style="white-space: pre-line;">Mandate: spearhead multi-plant digital transformation for a global electronics manufacturer, turning fragmented factory tech into a connected, intelligent ecosystem.</p><ul class="flex flex-col gap-2.5 max-w-[68ch]"><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Led multi-plant integration of MES, Connected Factory systems and predictive analytics into one manufacturing intelligence platform.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Developed standardized digital templates rolled out across manufacturing units — 20% gain in process consistency.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Built real-time production KPI dashboards that changed how leadership monitored quality and operational performance.</span></li></ul></div><div class="relative pb-14 last:pb-0" style="opacity: 0; transform: translateY(20px);"><div class="absolute -left-[33px] top-1 w-2.5 h-2.5 rounded-full border-2 border-foreground bg-background"></div><div class="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.08em] mb-1.5">Jun 2008 — Feb 2018</div><div class="font-heading font-medium text-foreground tracking-[-0.005em] mb-0.5" style="font-size: 1.5rem;">Deputy Manager — IT &amp; MES</div><div class="font-mono text-[13px] text-primary mb-3.5">Bosch Chassis Systems India Pvt Ltd · Pune, India</div><p class="text-[13.5px] text-muted-foreground italic mb-3.5 max-w-[65ch]" style="white-space: pre-line;">Mandate: lead Industry 4.0 transformation for Bosch's Asia-Pacific manufacturing operations — automation, connectivity and digital maturity across multiple plants.</p><ul class="flex flex-col gap-2.5 max-w-[68ch]"><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Executed a decade-long Industry 4.0 journey — IoT, PLC, RFID, MES and predictive maintenance — boosting OEE by 16%.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Standardized digital workflows across Bosch Asia plants, improving cross-plant efficiency by 15%.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Achieved 100% audit success for manufacturing IT cybersecurity, establishing Bosch-grade governance standards.</span></li><li class="relative pl-4 text-[14.5px] text-muted-foreground"><span class="absolute left-0 text-primary font-mono">›</span><span style="white-space: pre-line;">Designed and delivered digital capability training programs for next-generation manufacturing technologies.</span></li></ul></div><div class="mt-5 pt-5 border-t border-dashed border-border font-mono text-[12.5px] text-muted-foreground">EARLIER ROLES — Network Engineer, Pioneer Poultry Groups (2005–2008) · Associate Customer Engineer, Galaxy Computer Land (2002–2005)</div></div></div></section><section class="py-[84px] border-t border-border" id="education"><div class="max-w-[1180px] mx-auto px-8"><div class="mb-12 max-w-[70ch]"><div class="flex items-center gap-2.5 font-mono text-[12px] text-primary uppercase tracking-[0.14em] mb-3.5"><span class="w-6 h-px bg-primary inline-block"></span>Continuous Learning</div><h2 class="font-heading font-medium text-foreground tracking-[-0.01em]" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">Education &amp; Certifications</h2></div><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div style="opacity: 0; transform: translateY(20px);"><h3 class="font-mono text-[12px] text-primary uppercase tracking-[0.1em] mb-4 pb-2.5 border-b border-border">Academic Foundation</h3><div class="py-3 border-b border-border"><div class="text-[14.5px] text-foreground font-semibold">Executive MBA, Information Technology</div><div class="font-mono text-[12px] text-muted-foreground mt-0.5">Ural Federal University, Pune — 2018</div></div><div class="py-3 border-b border-border"><div class="text-[14.5px] text-foreground font-semibold">B.Tech, Industrial Electronics</div><div class="font-mono text-[12px] text-muted-foreground mt-0.5">YCMOU — 2014</div></div><div class="py-3 border-b border-border"><div class="text-[14.5px] text-foreground font-semibold">Diploma, Electrical &amp; Electronics</div><div class="font-mono text-[12px] text-muted-foreground mt-0.5">Nachimuthu Polytechnic — 2000</div></div></div><div style="opacity: 0; transform: translateY(20px);"><h3 class="font-mono text-[12px] text-primary uppercase tracking-[0.1em] mb-4 pb-2.5 border-b border-border">Certifications &amp; Training</h3><div class="flex flex-wrap gap-2.5"><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-primary border-primary/35" style="white-space: pre-line;">TOGAF 10 — Enterprise Architecture (In Progress)</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-primary border-primary/35" style="white-space: pre-line;">Digital Transformation — U.Virginia / BCG (Pursuing)</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Generative AI for Business Leaders</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Certified Information Security Manager</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">PMI Agile Certified Practitioner</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Scrum Master</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">ITIL Service Management</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">RHCE</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Google Analytics (Advanced)</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Data Science — Google Platform</span><span class="font-mono text-[11.5px] border px-3 py-2 rounded-sm text-muted-foreground border-border" style="white-space: pre-line;">Project Management — Microsoft &amp; LinkedIn</span></div></div></div><div class="mt-14 pt-7 border-t border-border flex flex-wrap gap-7 font-mono text-[12.5px] text-muted-foreground" style="opacity: 0;"><span><strong class="text-foreground">English</strong> — <span style="white-space: pre-line;">Fluent</span></span><span><strong class="text-foreground">Tamil</strong> — <span style="white-space: pre-line;">Native</span></span><span><strong class="text-foreground">German</strong> — <span style="white-space: pre-line;">In Progress</span></span><span><strong class="text-foreground">Arabic</strong> — <span style="white-space: pre-line;">Planned</span></span></div></div></section><section class="border-t border-border bg-foreground py-[90px] text-center" id="contact"><div class="max-w-[1180px] mx-auto px-8"><h2 class="font-heading font-medium text-background max-w-[16ch] mx-auto mb-5 leading-[1.1]" style="font-size: clamp(1.9rem, 4.4vw, 3.2rem); opacity: 0; transform: translateY(16px);">Let's build the next <em class="italic" style="color: hsl(var(--primary) / 0.8);">digital nervous system</em>.</h2><p class="text-[15px] max-w-[56ch] mx-auto mb-9 leading-relaxed" style="white-space: pre-line; color: hsl(var(--background) / 0.7); opacity: 0;">Open to Chief Digital Officer, VP Digital, and Head of Transformation opportunities across enterprise and growth-stage organizations.</p><div class="flex flex-wrap gap-4 justify-center" style="opacity: 0; transform: translateY(12px);"><a class="font-mono text-[13px] tracking-[0.04em] uppercase px-6 py-3.5 bg-primary text-background hover:bg-primary/90 transition-colors duration-200 rounded-sm inline-flex items-center gap-2 no-underline font-semibold" href="mailto:pvenkat.dxinnovate@gmail.com" style="white-space: pre-line;">pvenkat.dxinnovate@gmail.com</a><a class="font-mono text-[13px] tracking-[0.04em] uppercase px-6 py-3.5 border text-background hover:text-primary hover:border-primary/60 transition-colors duration-200 rounded-sm inline-flex items-center gap-2 no-underline" href="tel:+91-9766331946" style="white-space: pre-line; border-color: hsl(var(--background) / 0.25);">+91-9766331946</a><a class="font-mono text-[13px] tracking-[0.04em] uppercase px-6 py-3.5 border text-background hover:text-primary hover:border-primary/60 transition-colors duration-200 rounded-sm inline-flex items-center gap-2 no-underline" href="https://linkedin.com/in/venkatachalam-dtl/" rel="noopener noreferrer" style="white-space: pre-line; border-color: hsl(var(--background) / 0.25);" target="_blank">linkedin.com/in/venkatachalam-dtl</a></div></div></section></main><footer class="bg-foreground text-background"><div class="max-w-[1180px] mx-auto px-8 py-7 border-t border-border/20"><div class="flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.08em] uppercase text-muted-foreground/60"><span class="flex items-center gap-2 text-background/80"><svg aria-label="Venkatachalam Palaniappan monogram logo" class="flex-shrink-0" height="24" role="img" viewbox="0 0 40 40" width="24" xmlns="http://www.w3.org/2000/svg"><polygon fill="#111" points="20,2 35,11 35,29 20,38 5,29 5,11" stroke="#fff" stroke-width="1.4"></polygon><polygon fill="none" opacity="0.9" points="20,9 29,14.5 29,25.5 20,31 11,25.5 11,14.5" stroke="hsl(var(--primary))" stroke-width="1.2"></polygon><circle cx="20" cy="20" fill="#fff" r="1.6"></circle><circle cx="20" cy="9" fill="#fff" r="1.4"></circle><circle cx="29" cy="14.5" fill="#fff" r="1.4"></circle><circle cx="29" cy="25.5" fill="#fff" r="1.4"></circle><circle cx="20" cy="31" fill="#fff" r="1.4"></circle><circle cx="11" cy="25.5" fill="#fff" r="1.4"></circle><circle cx="11" cy="14.5" fill="#fff" r="1.4"></circle><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="20" y1="20" y2="9"></line><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="29" y1="20" y2="14.5"></line><line opacity="0.7" stroke="hsl(var(--primary))" stroke-width="1" x1="20" x2="11" y1="20" y2="25.5"></line><text fill="#fff" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle" x="20" y="23">VP</text></svg>© 2026 Venkatachalam Palaniappan</span><span>Coimbatore, India</span><span>Built for enterprise-scale ownership</span></div></div></footer></div></div>
+
+
+<div data-airo-dev-tools="" style="position: fixed; bottom: 8px; right: 8px; z-index: 999999; background: rgba(0, 0, 0, 0.85); color: rgb(0, 255, 0); font-family: monospace; font-size: 11px; padding: 8px 10px; border-radius: 6px; pointer-events: none; max-width: 300px; line-height: 1.4; display: none;"></div>
+<script>
+document.documentElement.style.scrollBehavior = "smooth";
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener("click", function () {
+    var target = document.querySelector(this.getAttribute("href"));
+    if (target) target.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+});
+</script>
+</body></html>
